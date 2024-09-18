@@ -9,7 +9,11 @@ pipeline {
         }
       }
     }
-
+stage('Security Check') {
+  steps {
+    sh 'snyk test'
+  }
+}
     stage('Test') {
       steps {
         script {
