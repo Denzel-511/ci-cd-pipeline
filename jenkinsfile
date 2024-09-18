@@ -1,0 +1,31 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build') {
+      steps {
+        script {
+          dockerImage = docker.build('cicdapp')
+        }
+      }
+    }
+
+    stage('Test') {
+      steps {
+        script {
+          dockerImage.inside {
+            sh 'echo "Running tests..."'
+          }
+        }
+      }
+    }
+
+    stage('Deploy') {
+      steps {
+        script {
+          dockerImage.push('cicdapp')
+        }
+      }
+    }
+  }
+}
