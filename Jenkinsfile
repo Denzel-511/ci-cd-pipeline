@@ -10,7 +10,7 @@ pipeline {
     // Step 1: Clone the repository from GitHub
     stage('Clone Repository') {
       steps {
-        git branch: 'main', url: 'https://github.com/Denzel-511/ci-cd-pipeline.git'
+        git branch: 'master', url: 'https://github.com/Denzel-511/ci-cd-pipeline.git'
       }
     }
 
